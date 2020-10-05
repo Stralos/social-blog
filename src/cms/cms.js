@@ -18,6 +18,6 @@ CMS.registerPreviewTemplate("about", AboutPagePreview);
 CMS.registerPreviewTemplate("products", ProductPagePreview);
 CMS.registerPreviewTemplate("blog", BlogPostPreview);
 
-CMS.registerWidget("categories", CategoriesControll, CategoriesPreview);
+CMS.registerWidget('categories', CategoriesControll, CategoriesPreview);
 
 CMS.registerEditorComponent(YoutubeEditor);
