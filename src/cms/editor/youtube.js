@@ -8,7 +8,7 @@ export const YoutubeEditor = {
     { name: "description", label: "Video description", widget: "string" },
   ],
   // Pattern to identify a block as being an instance of this component
-  pattern: /^youtube (\S+)$/,
+  pattern: /^<img src="http:\/\/img.youtube.com\/vi\/" (\S+)$/,
   // Function to extract data elements from the regexp match
   fromBlock: function (match) {
     return {
@@ -16,9 +16,7 @@ export const YoutubeEditor = {
     };
   },
   // Function to create a text block from an instance of this component
-  toBlock: function ({ id, description }) {
-    return "youtube " + id + description;
-  },
+  toBlock: YoutubePreview,
   toPreview: YoutubePreview,
 };
 

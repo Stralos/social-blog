@@ -5,7 +5,6 @@ import Layout from "../components/Layout";
 export const query = graphql`
   query PodcastPostByID($id: String!) {
     markdownRemark(id: { eq: $id }) {
-      id
       html
       frontmatter {
         title
@@ -14,14 +13,25 @@ export const query = graphql`
   }
 `;
 
-const PodcastPost = ({ data }) => {
-  const { markdownRemark: post } = data;
-
+export const PodcastPostBody = ({ title, body }) => {
   return (
-    <Layout>
-      <div>Hello world from podcast.</div>
-    </Layout>
+    <div>
+      <div>Hello world from podcast named: {`${title}`}.</div>
+      <div>{body}</div>
+    </div>
   );
 };
 
-export default PodcastPost;
+export default ({ data }) => {
+  const { html } = data.markdownRemark;
+  const { title } = data.markdownRemark.frontmatter;
+  return (
+    <Layout>
+      <PodcastPostBody
+        title={title}
+        body={<div dangerouslySetInnerHTML={{ __html: html }} />}
+      />
+    </Layout>
+  );
+}
+
