@@ -15,6 +15,17 @@ local_backend: true
 media_folder: static/img
 public_folder: /img
 
+custom_field_tag_list: &custom_field_tag_list
+  label: "Tags"
+  name: "tags"
+  widget: "relation"
+  collection: "meta"
+  file: "tags"
+  searchFields: ["tagList.*.name"]
+  displayFields: ["tagList.*.name"]
+  valueField: "tagList.*.name"
+  multiple: true
+
 collections:
   - name: "meta"
     label: "Meta"
@@ -28,8 +39,8 @@ collections:
               label: "Tags",
               name: "tagList",
               widget: "list",
-              summary: "{{fields.tagName}}",
-              field: { label: "Tag", name: "tagName", widget: "string" },
+              summary: "{{fields.name}}",
+              fields: [{ label: "Tag", name: "name", widget: "string" }],
             },
           ]
 
@@ -63,30 +74,37 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - {
+      [
+        {
           label: "Template Key",
           name: "templateKey",
           widget: "hidden",
           default: "podcast-post",
-        }
-      - { label: "Title", name: "title", widget: "string" }
-      - {
-          label: "Tags",
-          name: "postTags",
-          widget: "relation",
-          collection: "meta",
-          file: "tags",
-          searchFields: ["tagList.*.tagName"],
-          displayFields: ["tagList.*.tagName"],
-          valueField: "tagList.*.tagName",
-          multiple: true,
-        }
-      - {
+        },
+        { label: "Title", name: "title", widget: "string" },
+        {
+          label: "Publish date",
+          name: "date",
+          widget: "datetime",
+          timeFormat: false,
+          format: "YYYY-MM-DD",
+          dateFormat: "YYYY-MM-DD",
+          default: "",
+        },
+        {
+          label: "Featured Image",
+          name: "featuredimage",
+          widget: image,
+          required: true,
+        },
+        { <<: *custom_field_tag_list },
+        {
           label: "Body",
           name: "body",
           widget: "markdown",
           editorComponents: ["image", "youtube"],
-        }
+        },
+      ]
   - name: "pages"
     label: "Pages"
     files:

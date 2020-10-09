@@ -1,8 +1,6 @@
 ---
-blob: Temp
 tagList:
-  - Some Tag
-  - Some other tag
-  - Some new tag
-  - Test
+  - name: kategorija
+  - name: Pyragas
+  - name: Tortas
 ---
