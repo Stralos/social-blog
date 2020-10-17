@@ -30,19 +30,23 @@ collections:
   - name: "meta"
     label: "Meta"
     files:
-      - file: "src/meta/tags.md"
-        label: "Tags"
-        name: "tags"
-        fields:
-          [
-            {
-              label: "Tags",
-              name: "tagList",
-              widget: "list",
-              summary: "{{fields.name}}",
-              fields: [{ label: "Tag", name: "name", widget: "string" }],
-            },
-          ]
+      [
+        {
+          file: "src/meta/tags.md",
+          label: "Tags",
+          name: "tags",
+          fields:
+            [
+              {
+                label: "Tags",
+                name: "tagList",
+                widget: "list",
+                summary: "{{fields.name}}",
+                fields: [{ label: "Tag", name: "name", widget: "string" }],
+              },
+            ],
+        },
+      ]
 
   - name: "blog"
     label: "Blog"
