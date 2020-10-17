@@ -1,5 +1,5 @@
 import React from "react";
-import { PodcastPostBody } from "../../templates/podcast-post";
+import { PodcastPostBody } from "~src/templates/podcast-post";
 
 export const PodcastPostPreview = (props) => {
   const { entry, widgetFor } = props;

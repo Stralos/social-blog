@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout } from "../../components/new/layout";
+import { Layout } from "../components/new/layout";
 
 const PodcastIndexPage = () => {
   return (

@@ -5,15 +5,18 @@ import { NetlifyCmsEditorComponentImage } from "netlify-cms-editor-component-ima
 // import cloudinary from 'netlify-cms-media-library-cloudinary'
 
 import { registerPreviewTemplate } from "./helpers";
-import { styleInjector } from "./helpers/styleInjector";
 import AboutPagePreview from "./preview-templates/AboutPagePreview";
 import BlogPostPreview from "./preview-templates/BlogPostPreview";
 import ProductPagePreview from "./preview-templates/ProductPagePreview";
 import IndexPagePreview from "./preview-templates/IndexPagePreview";
 import { PodcastPostPreview } from "./preview-templates/PodcastPagePreview";
 
-import { CategoriesControll, CategoriesPreview } from "./widgets/youtube";
+import {
+  CategoriesControll,
+  CategoriesPreview,
+} from "./widgets/youtube";
 import { YoutubeEditor } from "./editor/youtube";
+import { Divider } from "./editor/divider";
 
 // CMS.registerMediaLibrary(uploadcare)
 // CMS.registerMediaLibrary(cloudinary)
@@ -27,4 +30,5 @@ registerPreviewTemplate("podcast", PodcastPostPreview);
 CMS.registerWidget("categories", CategoriesControll, CategoriesPreview);
 
 CMS.registerEditorComponent(YoutubeEditor);
+CMS.registerEditorComponent(Divider);
 CMS.registerEditorComponent(NetlifyCmsEditorComponentImage);

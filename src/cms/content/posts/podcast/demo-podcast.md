@@ -3,7 +3,7 @@ templateKey: podcast-post
 title: Coffee podcast
 meta: Test
 date: 2020-10-09T10:02:12.567Z
-featuredimage: /img/chemex.jpg
+featuredimage: /img/jumbotron.jpg
 tags:
   - kategorija
   - Pyragas
