@@ -1,10 +1,9 @@
 import React from "react";
-import { Link, graphql, StaticQuery } from "gatsby";
+import { Link, graphql, StaticQuery, navigate } from "gatsby";
 import Img from "gatsby-image";
+import moment from "~src/helpers/moment";
+import { Layout } from "~src/components/new/layout";
 import style from "./index.module.scss";
-import moment from "../../../helpers/moment";
-// import moment from 'moment';
-import { Layout } from "../../../components/new/layout";
 
 const BlogPostSneakPeek = ({ title, date, image, description, tags, link }) => {
   return (
@@ -21,21 +20,21 @@ const BlogPostSneakPeek = ({ title, date, image, description, tags, link }) => {
         <Link to={link}>
           <div className={style.blogHeader}>{title}</div>
           <div className={style.blogPostDate}>
-            {moment(date).format("YYYY MMMM DD")}
+            {moment(date).formatDefault()}
           </div>
           <div className={style.blogIntro}>{description}</div>
         </Link>
-        <ol className={style.blogTags}>
+        {/* <ol className={style.blogTags}>
           {tags.map((tag) => (
             <li key={tag}>{tag}</li>
           ))}
-        </ol>
+        </ol> */}
       </div>
     </li>
   );
 };
 
-const BlogIndexPage = ({ blogPostList }) => {
+const BlogIndexPage = ({ blogPostList, location }) => {
   const tagList = [
     ...new Set(
       blogPostList
@@ -49,30 +48,43 @@ const BlogIndexPage = ({ blogPostList }) => {
         )
     ),
   ];
+  const qq = new URLSearchParams(location.search);
+  const token = qq.get("tag");
 
   return (
     <Layout>
       <div className={style.container}>
-        <div> blog post list</div>
         <ul className={style.tagList}>
           {tagList.map((tag) => (
-            <li key={tag}>{tag}</li>
+            <li
+              key={tag}
+              onClick={() => navigate(`${location.pathname}?tag=${tag}`)}
+            >
+              {tag}
+            </li>
           ))}
         </ul>
         <ul>
-          {blogPostList.map(({ frontmatter, id, excerpt, tags, fields }) => {
-            return (
-              <BlogPostSneakPeek
-                key={id}
-                description={excerpt}
-                title={frontmatter.title}
-                date={frontmatter.date}
-                image={frontmatter.featuredimage}
-                tags={frontmatter.tags}
-                link={fields.slug}
-              />
-            );
-          })}
+          {blogPostList
+            .filter(({ frontmatter }) => {
+              if (!token) {
+                return true;
+              }
+              return frontmatter.tags.indexOf(token) !== -1;
+            })
+            .map(({ frontmatter, id, excerpt, fields }) => {
+              return (
+                <BlogPostSneakPeek
+                  key={id}
+                  description={excerpt}
+                  title={frontmatter.title}
+                  date={frontmatter.date}
+                  image={frontmatter.featuredimage}
+                  tags={frontmatter.tags}
+                  link={fields.slug}
+                />
+              );
+            })}
         </ul>
       </div>
     </Layout>
@@ -87,7 +99,7 @@ const query = graphql`
     ) {
       nodes {
         id
-        excerpt(pruneLength: 150)
+        excerpt(pruneLength: 325)
         fields {
           slug
         }
@@ -108,11 +120,14 @@ const query = graphql`
   }
 `;
 
-export default () => (
+export default ({ location }) => (
   <StaticQuery
     query={query}
     render={(props) => (
-      <BlogIndexPage blogPostList={props.allMarkdownRemark.nodes} />
+      <BlogIndexPage
+        blogPostList={props.allMarkdownRemark.nodes}
+        location={location}
+      />
     )}
   />
 );

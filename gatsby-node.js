@@ -29,7 +29,7 @@ exports.createPages = ({ actions, graphql }) => {
     data.podcastPosts.nodes.forEach((node) =>
       createPage({
         path: node.slug,
-        component: path.resolve(`src/templates/podcast-post.js`),
+        component: path.resolve(`src/templates/podcast-post/podcast-post.js`),
         context: {
           id: node.id,
         },

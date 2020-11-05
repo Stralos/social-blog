@@ -1,5 +1,6 @@
 import React from "react";
-import { PodcastPostBody } from "~src/templates/podcast-post";
+import { PodcastPostBody } from "~src/templates/podcast-post/podcast-post";
+import '~src/templates/podcast-post/podcast-post.module.scss';
 
 export const PodcastPostPreview = (props) => {
   const { entry, widgetFor } = props;
@@ -7,6 +8,7 @@ export const PodcastPostPreview = (props) => {
     <PodcastPostBody
       title={entry.getIn(["data", "title"])}
       body={widgetFor("body")}
+      date={widgetFor("date")}
     />
   );
 };
