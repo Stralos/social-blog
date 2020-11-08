@@ -48,9 +48,6 @@ const BlogIndexPage = ({ blogPostList, location }) => {
         )
     ),
   ];
-  const qq = new URLSearchParams(location.search);
-  const token = qq.get("tag");
-
   return (
     <Layout>
       <div className={style.container}>
@@ -67,10 +64,11 @@ const BlogIndexPage = ({ blogPostList, location }) => {
         <ul>
           {blogPostList
             .filter(({ frontmatter }) => {
-              if (!token) {
+              const tagFilter = new URLSearchParams(location.search).get("tag");
+              if (!tagFilter) {
                 return true;
               }
-              return frontmatter.tags.indexOf(token) !== -1;
+              return frontmatter.tags.indexOf(tagFilter) !== -1;
             })
             .map(({ frontmatter, id, excerpt, fields }) => {
               return (
