@@ -1,0 +1,52 @@
+@import "~src/styles/variables.scss";
+
+.sneakpeak {
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  &:first-of-type {
+    margin-top: 24px;
+  }
+  &:last-of-type {
+    margin-bottom: 24px;
+  }
+  & + .sneakpeak {
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 1px solid $color-grey2;
+  }
+  .image {
+    margin-right: 30px;
+    height: 133px;
+    width: 133px;
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .title {
+    font-size: 24px;
+  }
+  .date {
+    margin-top: 12px;
+    color: $color-grey;
+  }
+  .description {
+    margin-top: 12px;
+  }
+  &:hover {
+    .image {
+      position: relative;
+      &:before {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        background-repeat: no-repeat;
+        background-position: 50%;
+        background-image: url("../../img/play.svg");
+        content: "";
+      }
+    }
+  }
+}

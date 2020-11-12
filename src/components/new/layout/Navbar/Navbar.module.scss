@@ -5,10 +5,13 @@
 .link {
   margin: 0 30px;
   font-size: 14px;
-  color: #605e5e;
   line-height: 47px;
   transition: 0.5s;
+  color: #ccc;
   &:hover {
     color: #333;
   }
+}
+.active {
+  color: #333;
 }

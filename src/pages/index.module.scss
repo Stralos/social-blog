@@ -1,64 +1,93 @@
-.name {
-  width: 100%;
-  display: flex;
-  font-size: 120px;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(to bottom, transparent 50%, #e7eff1 50%);
-}
+$breakpoint-tablet: 1050px;
+
 .introduction {
   flex-direction: column;
   justify-content: center;
   display: flex;
   flex: 1;
   background: linear-gradient(to bottom, transparent 50%, #e7eff1 50%);
-}
-.description {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  font-size: 22px;
-  text-align: center;
+  .name {
+    width: 100%;
+    display: flex;
+    font-size: 120px;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, transparent 50%, #e7eff1 50%);
+    @media (max-width: $breakpoint-tablet) {
+      font-size: 60px;
+    }
+  }
+  .description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 22px;
+    text-align: center;
+    @media (max-width: $breakpoint-tablet) {
+      font-size: 16px;
+    }
+  }
 }
 
 .links {
   display: flex;
   justify-content: space-between;
+  flex-direction: row;
+
+  @media (max-width: $breakpoint-tablet) {
+    flex-direction: column;
+  }
 }
 
 .link {
   padding: 54px 20px;
+  @media (max-width: $breakpoint-tablet) {
+    padding-top: 34px;
+  }
   flex: 1;
   display: flex;
   align-items: center;
   flex-direction: column;
   &:nth-of-type(4n) {
-    background-color: #ccc6c6;
-  }
-  &:nth-of-type(4n-1) {
-    background-color: #efeded;
-  }
-  &:nth-of-type(4n-2) {
-    background-color: #f9dcd6;
-  }
-  &:nth-of-type(4n-3) {
     background-color: #e6c7b4;
   }
-
+  &:nth-of-type(4n-1) {
+    background-color: #f9dcd6;
+  }
+  &:nth-of-type(4n-2) {
+    background-color: #efeded;
+  }
+  &:nth-of-type(4n-3) {
+    background-color: #ccc6c6;
+  }
   .linkTitle {
     font-size: 44px;
+    @media (max-width: $breakpoint-tablet) {
+      font-size: 32px;
+    }
   }
   .linkDescription {
     text-align: center;
     font-size: 16px;
-    margin-bottom: 12px
+    @media (max-width: $breakpoint-tablet) {
+      font-size: 15px;
+    }
+    margin-bottom: 12px;
   }
   .linkContent {
     margin: 0 30%;
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
+    @media (max-width: $breakpoint-tablet) {
+      margin: 0;
+    }
+    a {
+      color: inherit;
+      padding-bottom: 2px;
+      border-bottom: 1px solid black;
+    }
   }
 }
 
@@ -66,5 +95,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: calc( 100vh - 58px );
+  min-height: calc(100vh - 58px);
+  @media (max-width: $breakpoint-tablet) {
+  }
 }

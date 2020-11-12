@@ -24,11 +24,6 @@ const BlogPostSneakPeek = ({ title, date, image, description, tags, link }) => {
           </div>
           <div className={style.blogIntro}>{description}</div>
         </Link>
-        {/* <ol className={style.blogTags}>
-          {tags.map((tag) => (
-            <li key={tag}>{tag}</li>
-          ))}
-        </ol> */}
       </div>
     </li>
   );
@@ -93,7 +88,7 @@ const query = graphql`
   query NewBogPostList {
     allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { templateKey: { eq: "podcast-post" } } }
+      filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
     ) {
       nodes {
         id

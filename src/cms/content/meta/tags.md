@@ -1,6 +1,7 @@
 ---
 tagList:
-  - name: kategorija
-  - name: Pyragas
-  - name: Tortas
+  - name: Kavos pupeles
+  - name: Maistas
+  - name: Kavos ruosimas
+  - name: Kava
 ---

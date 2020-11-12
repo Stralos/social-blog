@@ -12,6 +12,13 @@ exports.createPages = ({ actions, graphql }) => {
       slug
     }
     query {
+      blogPosts: allMdx(
+        filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
+      ) {
+        nodes {
+          ...Post
+        }
+      }
       podcastPosts: allMdx(
         filter: { frontmatter: { templateKey: { eq: "podcast-post" } } }
       ) {
@@ -29,7 +36,16 @@ exports.createPages = ({ actions, graphql }) => {
     data.podcastPosts.nodes.forEach((node) =>
       createPage({
         path: node.slug,
-        component: path.resolve(`src/templates/podcast-post/podcast-post.js`),
+        component: path.resolve("src/templates/podcast-post/podcast-post.js"),
+        context: {
+          id: node.id,
+        },
+      })
+    );
+    data.blogPosts.nodes.forEach((node) =>
+      createPage({
+        path: node.slug,
+        component: path.resolve("src/templates/blog-post/index.js"),
         context: {
           id: node.id,
         },

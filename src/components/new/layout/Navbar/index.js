@@ -4,16 +4,26 @@ import style from "./Navbar.module.scss";
 
 export const Navbar = () => (
   <nav className={style.navigation}>
-    <Link className={style.link} to={"/"}>
+    <Link partiallyActive={style.active} className={style.link} to={"/"}>
       Pagrindinis
     </Link>
-    <Link className={style.link} to={"/blog"}>
+    <Link
+      partiallyActive={style.active}
+      activeClassName={style.active}
+      className={style.link}
+      to={"/blog"}
+    >
       Blogas
     </Link>
-    <Link className={style.link} to={"/podcast"}>
+    <Link
+      partiallyActive={style.active}
+      activeClassName={style.active}
+      className={style.link}
+      to={"/podcast"}
+    >
       Puodkastai
     </Link>
-    <Link className={style.link} to={"about"}>
+    <Link activeClassName={style.active} className={style.link} to={"about"}>
       Apie
     </Link>
   </nav>
