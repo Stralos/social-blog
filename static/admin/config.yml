@@ -114,13 +114,9 @@ collections:
           widget: image,
           required: true,
         },
+        { label: "Description", name: "description", widget: "string" },
         { <<: *custom_field_tag_list },
-        {
-          label: "Body",
-          name: "body",
-          widget: "markdown",
-          editorComponents: ["image", "youtube", "divider"],
-        },
+        { label: "Podcast", name: "podcast", widget: "string" },
       ]
   # - name: "pages"
   #   label: "Pages"

@@ -4,7 +4,8 @@ title: New path podcast
 date: 2020-10-17
 featuredimage: /img/chemex.jpg
 tags:
-  - Pyragas
+  - Kavos pupeles
+  - Maistas
 ---
 
 We expect the shipment of a limited quantity of green beans next Monday. We’ll be offering the roasted beans from Tuesday, but quantities are limited, so be quick.
