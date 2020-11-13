@@ -1,0 +1,27 @@
+.title {
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+}
+.date {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 26px;
+}
+.container {
+  padding: 20px 0;
+  max-width: 750px;
+  width: 100%;
+  margin: 0 auto;
+  p {
+    font-size: 17px;
+    margin-bottom: 17px;
+  }
+  img {
+    padding: 0 2px;
+  }
+}
+.link {
+  width: 100%;
+  height: 400px;
+}
